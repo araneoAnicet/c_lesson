@@ -39,37 +39,44 @@ int main(){
     int firstList[] = {0, 6, 2};
     int secondList[] = {4, 8, 1};
     int thirdList[listSize];
-    int userInput;
+    char userInput;
 
-
-    printf("Functions:\n\n");
-    printf("1. Show A list\n");
-    printf("2. Show B list\n");
-    printf("3. Swap A and B values\n");
-    printf("4. Fill out C list\n");
-    scanf("%d", &userInput);
-
-    switch(userInput){
-        case 1:
+    do {
+        printf("Functions:\n\n");
+        printf("0. FINISH\n");
+        printf("1. Show A list\n");
+        printf("2. Show B list\n");
+        printf("3. Swap A and B values\n");
+        printf("4. Fill out C list\n");
+        fflush(stdin);
+        scanf("%c", &userInput);
+        printf("\n>User input: %c\n\n", userInput);
+        switch(userInput){
+        case '0':
+            printf("\n>>SHUTTING DOWN.    .   .\n");
+            break;
+        case '1':
             listOutput(firstList, listSize);
             break;
-        case 2:
+        case '2':
             listOutput(secondList, listSize);
             break;
-        case 3:
+        case '3':
             exchange(firstList, secondList, listSize);
             printf("\nA list:\n");
             listOutput(firstList, listSize);
             printf("\nB list:\n");
             listOutput(secondList, listSize);
             break;
-        case 4:
+        case '4':
             minimum(firstList, secondList, thirdList, listSize);
             listOutput(thirdList, listSize);
             break;
         default:
             printf("Wrong user input!\n\n\n");
-    }
+        }
+    } while(userInput != '0');
 
-        return 0;
+    system("clear");
+    return 0;
 }
